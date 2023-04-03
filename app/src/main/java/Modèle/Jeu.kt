@@ -2,77 +2,95 @@ package Modèle
 
 
 
-class Jeu(val mots:MutableList<String> ) {
+class Jeu(val listeDeMots:MutableList<String> ) {
+    private var LettreEssayées = CharArray(26)
+    private var MotÀDeviner : String=""
+
     var pointage = 0
     var nbErreur = 0
 
-    var lettreDejaDevine : Char = 'a'
-    var ListeLettreDejaDevine = mutableListOf<Char>()
+
 
     init {
-        this.mots.addAll(mutableListOf("Fruits", "Voiture", "Police"))
+        this.listeDeMots.addAll(mutableListOf("Fruits", "Voiture", "Police"))
         //val randomizedList = mots.shuffled()
+        if (listeDeMots.isEmpty()) {
+            throw IllegalArgumentException("La liste de mots est vide")
+        }
+        MotÀDeviner = listeDeMots.random()
         this.pointage
         this.nbErreur
     }
 
-    var HasardMot = mots.random()
 
 
-    fun verifiieTableau() : List<String> {
-        if (mots.isEmpty()) {
-            throw IllegalArgumentException("Le tableau ne contient de mots")
-        }
-        return mots
 
-    }
 
-    fun essayerUneLettre(devinelettre : Char){
 
-        for ( lettre in HasardMot.iterator()) {
-            if (devinelettre.lowercase().equals(lettre.lowercase())|| devinelettre.uppercase().equals(lettre.uppercase())) {
+
+    fun essayerUneLettre(lettre : Char) : Boolean {
+        val charArray = MotÀDeviner.toCharArray()
+        lettre.uppercaseChar()
+        for (ic in charArray) {
+            if (charArray.contains(lettre)) {
                 pointage++
-                lettreDejaDevine = devinelettre
-                ListeLettreDejaDevine.add(lettreDejaDevine)
+                LettreEssayées.plus(lettre)
+                return true
 
-        }else if (devinelettre.equals(lettreDejaDevine)) {
-                println("Vous avez deja devine cettre lettre")
+            } else if (LettreEssayées.contains(lettre)) {
+                nbErreur++
+                LettreEssayées.plus(lettre)
+                return false
+            } else {
+                nbErreur++
+
+                return false
+            }
+
+
         }
-        else
-            nbErreur++
+        return true
+    }
+
+        fun estRéussi() : Boolean {
+            var convertedString = String(LettreEssayées)
+            if (MotÀDeviner.contains(convertedString)) {
+                return true
+            }
+            return false
 
         }
 
+
+
+
+
+            fun réinitialiser() {
+                pointage = 0
+                nbErreur = 0
+                MotÀDeviner = listeDeMots.random()
+            }
+
+            fun étatLettres() :CharArray {
+                val charArray = MotÀDeviner.toCharArray()
+
+                for (ic in charArray) {
+                    if (charArray.contains(ic)) {
+                        charArray.plus(ic)
+                    }
+                }
+
+
+            return charArray
+
+
+
+                        //val uppercaseCh = ListeLettreDejaDevine.toUpperCase()
+
+            }
+
+
+
+
+
     }
-
-    fun estRéussi() : Boolean  {
-        if (ListeLettreDejaDevine.joinToString("") == HasardMot.joinToString("")) {
-            return true
-
-
-    }
-
-    fun réinitialiser() {
-        pointage=0
-        nbErreur=0
-        HasardMot = mots.random()
-    }
-
-    fun étatLettres()  {
-
-        //val uppercaseCh = ListeLettreDejaDevine.toUpperCase()
-
-    }
-
-
-
-    }
-
-
-
-
-
-
-
-
-}
