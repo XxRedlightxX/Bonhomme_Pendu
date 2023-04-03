@@ -16,7 +16,7 @@ class Jeu(val mots:MutableList<String> ) {
         this.nbErreur
     }
 
-    var HasardMot = mots.shuffled()
+    var HasardMot = mots.random()
 
 
     fun verifiieTableau() : List<String> {
@@ -55,7 +55,7 @@ class Jeu(val mots:MutableList<String> ) {
     fun réinitialiser() {
         pointage=0
         nbErreur=0
-        HasardMot = mots.shuffled()
+        HasardMot = mots.random()
     }
 
     fun étatLettres()  {
