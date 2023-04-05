@@ -1,4 +1,4 @@
-package Modèle
+package dti.g25.pendu.Modèle
 
 
 
@@ -72,22 +72,22 @@ class Jeu(val listeDeMots:MutableList<String> ) {
             }
 
             fun étatLettres() :CharArray {
-                val charArray = MotÀDeviner.toCharArray()
+                var charArray = MotÀDeviner.toCharArray()
+                return charArray
 
-                for (ic in charArray) {
-                    if (charArray.contains(ic)) {
-                        charArray.plus(ic)
-                    }
+
+            /*for (ic in charArray.indices) {
+                    if (charArray[ic].equals(LettreEssayées[ic]) {
+                        return charArray
+
+                    } else{
+                        return charArray
                 }
+            //val uppercaseCh = ListeLettreDejaDevine.toUpperCase()
+                    }
+                    */
 
-
-            return charArray
-
-
-
-                        //val uppercaseCh = ListeLettreDejaDevine.toUpperCase()
-
-            }
+                }
 
 
 

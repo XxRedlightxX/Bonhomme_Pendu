@@ -10,24 +10,18 @@ import dti.g25.pendu.Présentateur.Présentateur
 
 var lettres = emptyArray<Button>()
 
-
-
+@SuppressLint("StaticFieldLeak")
+lateinit var tvScore: TextView
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
-    val présentateur = Présentateur(this)
-    lateinit var tvScore: TextView
-    lateinit var tvMots: TextView
-    var btnReint= findViewById( R.id.btnReinit ) as Button
+    val présentateur = Présentateur( this )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        tvScore = findViewById( R.id.tvScore )
-        btnReint.setOnClickListener { présentateur.démarrer() }
-        présentateur.démarrer()
 
     }
-    //tvScore = findViewById( R.id.tvScore )
+    tvScore = findViewById( R.id.tvScore )
 
     override fun onClick(v : View) {
 
@@ -35,15 +29,14 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private  fun afficherÉtatLettres(état : String) {
-        tvMots.text = String.format("%.1f", état )
-
+        présentateur.démarrer()
 
 
 
     }
 
     private fun afficherScore(score : Int) {
-        tvScore.text = String.format("%.1f", score )
+        présentateur.
 
     }
 }

@@ -1,7 +1,0 @@
-package Présentateur
-
-class Présentateur {
-
-
-
-}
