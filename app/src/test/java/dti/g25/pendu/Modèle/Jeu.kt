@@ -3,8 +3,8 @@ package dti.g25.pendu.Modèle
 
 
 class Jeu(val listeDeMots:MutableList<String> ) {
-    private var LettreEssayées = CharArray(26)
-    private var MotÀDeviner : String=""
+    var LettreEssayées = CharArray(26)
+    var MotÀDeviner : String=""
 
     var pointage = 0
     var nbErreur = 0
@@ -52,45 +52,45 @@ class Jeu(val listeDeMots:MutableList<String> ) {
         return true
     }
 
-        fun estRéussi() : Boolean {
-            var convertedString = String(LettreEssayées)
-            if (MotÀDeviner.contains(convertedString)) {
-                return true
-            }
-            return false
-
+    fun estRéussi() : Boolean {
+        var convertedString = String(LettreEssayées)
+        if (MotÀDeviner.contains(convertedString)) {
+            return true
         }
-
-
-
-
-
-            fun réinitialiser() {
-                pointage = 0
-                nbErreur = 0
-                MotÀDeviner = listeDeMots.random()
-            }
-
-            fun étatLettres() :CharArray {
-                var charArray = MotÀDeviner.toCharArray()
-                return charArray
-
-
-            /*for (ic in charArray.indices) {
-                    if (charArray[ic].equals(LettreEssayées[ic]) {
-                        return charArray
-
-                    } else{
-                        return charArray
-                }
-            //val uppercaseCh = ListeLettreDejaDevine.toUpperCase()
-                    }
-                    */
-
-                }
-
-
-
-
+        return false
 
     }
+
+
+
+
+
+    fun réinitialiser() {
+        pointage = 0
+        nbErreur = 0
+        MotÀDeviner = listeDeMots.random()
+    }
+
+    fun étatLettres() :CharArray {
+        var charArray = MotÀDeviner.toCharArray()
+        return charArray
+
+
+        /*for (ic in charArray.indices) {
+                if (charArray[ic].equals(LettreEssayées[ic]) {
+                    return charArray
+
+                } else{
+                    return charArray
+            }
+        //val uppercaseCh = ListeLettreDejaDevine.toUpperCase()
+                }
+                */
+
+    }
+
+
+
+
+
+}

@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Pendu</string>
+    <string name="trouver_ce_mot">Trouver ce mot :</string>
+    <string name="score">Score</string>
 </resources>

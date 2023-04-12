@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         setContentView(R.layout.activity_main)
 
     }
-    tvScore = findViewById( R.id.tvScore )
+    //tvScore = findViewById( R.id.tvScore )
 
     override fun onClick(v : View) {
 
@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun afficherScore(score : Int) {
-        présentateur.
+        //présentateur.
 
     }
 }

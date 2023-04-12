@@ -3,7 +3,7 @@ package dti.g25.pendu.Modèle
 import org.junit.Assert.*
 import org.junit.Test
 
-class JeuTest {
+class Jeu2Test {
     val myList = mutableListOf("Fruits", "Voiture", "Police")
 
     var jeu = Jeu(myList)
@@ -16,17 +16,4 @@ class JeuTest {
 
 
     }
-
-
-
-
-    @Test
-    fun test1 (){
-
-        println("tesssssssssssssssssssssssssssssssssst")
-
-
-    }
-
-
 }
