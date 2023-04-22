@@ -7,18 +7,14 @@ import dti.g25.pendu.R
 class Jeu(val listeDeMots:MutableList<String> ) {
     var LettreEssayées = mutableListOf<Char>()
     var MotÀDeviner: String = ""
-     lateinit var image: TextView
-    //image = findViewById<ImageView>(R.id.image)
 
     var pointage = 0
     var nbErreur = 0
-    var cards= arrayOf(
-        R.drawable.image1,
-        R.drawable.image2,
-        R.drawable.image3,
-        R.drawable.image4,
-        R.drawable.image5)
 
+    init {
+        if(listeDeMots.isEmpty())
+            throw IllegalArgumentException("La liste est vide")
+    }
 
     init {
         this.listeDeMots.addAll(mutableListOf("fruits"))
@@ -37,107 +33,103 @@ class Jeu(val listeDeMots:MutableList<String> ) {
 
 
     fun essayerUneLettre(lettre: Char): Boolean {
-        val ListeMotADeviner = MotÀDeviner.toCharArray()
-        lettre.uppercaseChar()
+        var ListeMotADeviner = MotÀDeviner.toCharArray()
+        var lettreMAj = lettre.uppercaseChar()
+        var succès = false
+        if (!LettreEssayées.contains(lettreMAj)) {
+
+            //LettreEssayées.add(lettreMAj)
 
 
-        for (ic in ListeMotADeviner) {
-            if (ListeMotADeviner.contains(lettre) && !LettreEssayées.contains(lettre)) {
+            if (ListeMotADeviner.contains(lettreMAj)) {
+                //pointage++
+                LettreEssayées.add(lettreMAj)
+                //nbErreur++
+                succès = true
+
+
+            } else   {
+                succès = false
+                LettreEssayées.add(lettreMAj)
+                //pointage++
+
+            }
+            if(succès) {
                 pointage++
-                LettreEssayées.add(lettre)
-                return true
-
-            } else if (LettreEssayées.contains(lettre)) {
+            } else if(!succès) {
                 nbErreur++
-                /*val photo = when (nbErreur) {
-                    1 -> R.drawable.image1
-                    2 -> R.drawable.image2
-                    3 -> R.drawable.image3
-                    4 -> R.drawable.image4
-                    3 -> R.drawable.image5
-                    else -> {}
-
-                }*/
-
-
-
-
-
-
-                LettreEssayées.add(lettre)
-
-                return false
-            } else {
-                nbErreur++
-                LettreEssayées.add(lettre)
-
-
-                return false
             }
-            LettreEssayées
 
 
+            }
+            return succès
 
         }
-        return false
-    }
-    /**
-     * Verifie si l'utilisateur a réussi ou non la partie
-     */
+        /**
+         * Verifie si l'utilisateur a réussi ou non la partie
+         */
 
-    fun estRéussi(): Boolean {
-        var StatutMots: CharArray = CharArray(MotÀDeviner.length - 1)
-        val arrayMotADeviner: Array<String> = MotÀDeviner.map { it.toString() }.toTypedArray()
-        var SolutionMotDeviner = arrayMotADeviner.toString()
-        var LettreEssayerString = StatutMots.toString()
-        if (SolutionMotDeviner ==LettreEssayerString) {
-            return true
+        fun estRéussi(): Boolean {
+            var retour = false
+            var MotÀDevine = MotÀDeviner.toCharArray()
+            if (MotÀDevine.size == pointage) {
+                retour = true
+
+            }
+            return retour
         }
-        return false
 
-    }
-    /**
-     * Reinitailise la partie
-     */
+        /**
+         * Reinitailise la partie
+         */
 
-    fun réinitialiser() {
-        pointage = 0
-        nbErreur = 0
-        MotÀDeviner = listeDeMots.random()
-        LettreEssayées.clear()
-    }
+        fun réinitialiser() {
+            pointage = 0
+            nbErreur = 0
+            MotÀDeviner = listeDeMots.random()
+            LettreEssayées.clear()
+        }
 
-    /**
-     *
-     */
+        /**
+         *
+         */
 
-    fun étatLettres(): CharArray {
-        var i: Int = 0
-        var StatutMot: CharArray = CharArray(MotÀDeviner.length - 1) { '*' }
-        //var solution = MotÀDeviner.toCharArray()
-        val arrayMotADeviner: Array<String> = MotÀDeviner.map { it.toString() }.toTypedArray()
-        for (lettresDevines: Char in LettreEssayées) {
-            i = 0
-            for (lettresMotADeviner: String in arrayMotADeviner) {
-                if (lettresMotADeviner.single().lowercase().equals((lettresDevines.lowercase()))) {
-                    StatutMot.set(i, lettresDevines)
+        fun étatLettres(): CharArray {
+            var i: Int = 0
+            var StatutMot: CharArray = CharArray(MotÀDeviner.length - 1) { '*' }
+            //var solution = MotÀDeviner.toCharArray()
+            val arrayMotADeviner: Array<String> = MotÀDeviner.map { it.toString() }.toTypedArray()
+            for (lettresDevines: Char in LettreEssayées) {
+                i = 0
+                for (lettresMotADeviner: String in arrayMotADeviner) {
+                    if (lettresMotADeviner.single().lowercase()
+                            .equals((lettresDevines.lowercase()))
+                    ) {
+                        StatutMot.set(i, lettresDevines)
+                    }
+                    i++
                 }
-                i++
             }
+
+
+            return StatutMot
+        }
+
+        fun NbrScore(): Int {
+            var Score = 0
+            Score = pointage - nbErreur
+            return Score
+
         }
 
 
-        return StatutMot
-    }
-
-    fun NbrePoints() : Int {
-        return pointage -nbErreur
-    }
 
 
 
 
 }
+
+
 
 
 

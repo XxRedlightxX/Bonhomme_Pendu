@@ -172,15 +172,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
 
 
-    //tvScore = findViewById( R.id.tvScore )
-
-
-
     override fun onClick(v: View) {
-      /*  if (v == imgPendu) {
-            currentImageIndex = (currentImageIndex + 1) % images.size
-            imgPendu.setImageResource(images[currentImageIndex])
-        }*/
+
 
             if(v is Button) {
                 println("la lettre selectionne est : " + v.text.toString())
@@ -230,18 +223,23 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     }
 
-    fun afficherPendu(Erreur:Int) {
-        currentImageIndex = (currentImageIndex + 1) % images.size
-        imgPendu.setImageResource(images[currentImageIndex])
 
-
-
-
-    }
     fun RecommencerImage() {
         imgPendu.setImageResource(R.drawable.image1)
 
 
+
+    }
+
+    fun afficherHomme(nbErreur : Int) {
+        when(nbErreur){
+            0 -> imgPendu.setImageResource(R.drawable.image1)
+            1 -> imgPendu.setImageResource(R.drawable.image2)
+            2 -> imgPendu.setImageResource(R.drawable.image3)
+            3 -> imgPendu.setImageResource(R.drawable.image4)
+            4 -> imgPendu.setImageResource(R.drawable.image5)
+
+        }
 
     }
 }
