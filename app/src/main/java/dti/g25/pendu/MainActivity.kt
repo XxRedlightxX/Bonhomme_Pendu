@@ -53,8 +53,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
 
     lateinit var btnReint: Button
-    lateinit var images: Array<Int>
-    var currentImageIndex = 0
+
     // Couleurs des boutons
     val COULEUR_NORMAL = 0
     val COULEUR_SÉLECTIONNÉ = 0xFFFF0000.toInt()
@@ -62,13 +61,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
 
 
-    /*lateinit var btnReint: Button
-    var imageIds = arrayOf(
-        R.drawable.Tete,
-        R.drawable.Corps,
-        R.drawable.Bras,
-        R.drawable.Mort
-    )*/
+
 
 
     @SuppressLint("DiscouragedApi")
@@ -127,7 +120,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
 
         /**
-         * Tests
+         * Bouton Réiniatiliser
 
         */
         btnReint.setOnClickListener { présentateur.démarrer()
@@ -154,11 +147,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             if(v is Button) {
                 println("la lettre selectionne est : " + v.text.toString())
                 présentateur.sélectionnerLettre(v.text.toString().single())
-                println( "tessssst lettre essayées : " +présentateur.jeu.lettreEssayées.joinToString())
 
-                println( "Nbre Erreurs : " +présentateur.jeu.nbErreur)
-                println( "Nbre Pointage : " +présentateur.jeu.pointage)
-                println( "test si le jeu est reussi : " +présentateur.jeu.estRéussi())
+
+
                 v.isEnabled=false
 
             }
@@ -181,7 +172,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
 
 
-        //btn.setOnClickListener( MonListener() )
+
 
 
     }

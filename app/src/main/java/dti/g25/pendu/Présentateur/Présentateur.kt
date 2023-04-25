@@ -58,7 +58,7 @@ class Présentateur(var vue: MainActivity) {
         jeu.réinitialiser()
         vue.afficherÉtatLettre(jeu.étatLettres().joinToString(""))
         vue.afficherScore(0)
-        //vue.afficherPendu(0)
+
         vue.RecommencerImage()
 
 
@@ -66,17 +66,7 @@ class Présentateur(var vue: MainActivity) {
 
     }
 
-    fun afficherImage(nbErreur : Int){
 
-            when(jeu.nbErreur){
-                0 -> vue.imgPendu.setImageResource(R.drawable.image1)
-                1 -> vue.imgPendu.setImageResource(R.drawable.image2)
-                2 -> vue.imgPendu.setImageResource(R.drawable.image3)
-                3 -> vue.imgPendu.setImageResource(R.drawable.image4)
-                4 -> vue.imgPendu.setImageResource(R.drawable.image5)
-
-            }
-        }
 
 
 
