@@ -5,8 +5,8 @@ import dti.g25.pendu.R
 
 
 class Jeu(val listeDeMots:MutableList<String> ) {
-    var LettreEssayées = mutableListOf<Char>()
-    var MotÀDeviner: String = ""
+    var lettreEssayées = mutableListOf<Char>()
+    var motÀDeviner: String = ""
 
     var pointage = 0
     var nbErreur = 0
@@ -22,7 +22,7 @@ class Jeu(val listeDeMots:MutableList<String> ) {
         if (listeDeMots.isEmpty()) {
             throw IllegalArgumentException("La liste de mots est vide")
         }
-        MotÀDeviner = listeDeMots.random()
+        motÀDeviner = listeDeMots.random()
         this.pointage
         this.nbErreur
     }
@@ -33,32 +33,30 @@ class Jeu(val listeDeMots:MutableList<String> ) {
 
 
     fun essayerUneLettre(lettre: Char): Boolean {
-        var ListeMotADeviner = MotÀDeviner.toCharArray()
+        var ListeMotADeviner = motÀDeviner.toCharArray()
         var lettreMAj = lettre.uppercaseChar()
         var succès = false
-        if (!LettreEssayées.contains(lettreMAj)) {
+        if (!lettreEssayées.contains(lettreMAj)) {
 
             //LettreEssayées.add(lettreMAj)
 
 
             if (ListeMotADeviner.contains(lettreMAj)) {
-                //pointage++
-                LettreEssayées.add(lettreMAj)
+                pointage++
+                lettreEssayées.add(lettreMAj)
                 //nbErreur++
                 succès = true
 
 
-            } else   {
-                succès = false
-                LettreEssayées.add(lettreMAj)
-                //pointage++
+            }
+            else  {
+                    succès = false
+                    nbErreur++
+                    lettreEssayées.add(lettreMAj)
+
 
             }
-            if(succès) {
-                pointage++
-            } else if(!succès) {
-                nbErreur++
-            }
+
 
 
             }
@@ -70,13 +68,14 @@ class Jeu(val listeDeMots:MutableList<String> ) {
          */
 
         fun estRéussi(): Boolean {
-            var retour = false
-            var MotÀDevine = MotÀDeviner.toCharArray()
-            if (MotÀDevine.size == pointage) {
-                retour = true
-
+            for(lettreÀDeviner in motÀDeviner) {
+                if(!lettreEssayées.contains(lettreÀDeviner)) {
+                    return false
+                }
             }
-            return retour
+            return true
+
+
         }
 
         /**
@@ -86,20 +85,20 @@ class Jeu(val listeDeMots:MutableList<String> ) {
         fun réinitialiser() {
             pointage = 0
             nbErreur = 0
-            MotÀDeviner = listeDeMots.random()
-            LettreEssayées.clear()
+            motÀDeviner = listeDeMots.random()
+            lettreEssayées.clear()
         }
 
         /**
-         *
+         * Iniatilise un tableau vide  va remplir en fonction des lettre devines
          */
 
         fun étatLettres(): CharArray {
             var i: Int = 0
-            var StatutMot: CharArray = CharArray(MotÀDeviner.length - 1) { '*' }
+            var StatutMot: CharArray = CharArray(motÀDeviner.length ) { '*' }
             //var solution = MotÀDeviner.toCharArray()
-            val arrayMotADeviner: Array<String> = MotÀDeviner.map { it.toString() }.toTypedArray()
-            for (lettresDevines: Char in LettreEssayées) {
+            val arrayMotADeviner: Array<String> = motÀDeviner.map { it.toString() }.toTypedArray()
+            for (lettresDevines: Char in lettreEssayées) {
                 i = 0
                 for (lettresMotADeviner: String in arrayMotADeviner) {
                     if (lettresMotADeviner.single().lowercase()
@@ -115,12 +114,7 @@ class Jeu(val listeDeMots:MutableList<String> ) {
             return StatutMot
         }
 
-        fun NbrScore(): Int {
-            var Score = 0
-            Score = pointage - nbErreur
-            return Score
 
-        }
 
 
 

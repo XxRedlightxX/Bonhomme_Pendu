@@ -309,7 +309,7 @@
             android:id="@+id/btnReinit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Démarrer le jeu" />
+            android:text="@string/d_marrer_le_jeu" />
 
     </LinearLayout>
 

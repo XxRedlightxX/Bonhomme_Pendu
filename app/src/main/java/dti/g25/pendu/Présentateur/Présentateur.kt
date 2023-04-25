@@ -11,9 +11,8 @@ import dti.g25.pendu.R
 class Présentateur(var vue: MainActivity) {
 
 
-    val myList = mutableListOf("FRUIT", "POLICE", "CAMION")
-    var cards= arrayOf(R.drawable.image1,R.drawable.image2,R.drawable.image3,R.drawable.image4,R.drawable.image5)
-    private lateinit var myTextView: TextView
+    val myList = mutableListOf("FRUIT", "POLICE", "CAMION", "STATUE", "OUVRIER","NAVIRE","BANQUIER","BANLANCOIRE","COUVERTURE","VOYAGE","ETE")
+
      var jeu = Jeu(myList)
 
     init {
@@ -28,35 +27,19 @@ class Présentateur(var vue: MainActivity) {
         //val Lettres = String(jeu.étatLettres())
         jeu.essayerUneLettre(lettre)
         vue.afficherÉtatLettre(jeu.étatLettres().joinToString(""))
-        vue.afficherScore(jeu.NbrScore())
+        vue.afficherScore(jeu.pointage)
         //vue.afficherPendu(jeu.nbErreur)
         vue.afficherHomme(jeu.nbErreur)
-        /*if (jeu.essayerUneLettre(lettre)) {
+        if(jeu.estRéussi()==true) {
+            vue.afficherÉtatLettre("Bravo votre mot était : " + jeu.motÀDeviner)
 
-            vue.afficherÉtatLettre(jeu.étatLettres().joinToString(""))
-            vue.afficherScore(jeu.NbrePoints())
+        }
+        if(jeu.nbErreur>=6) {
+            vue.afficherÉtatLettre("Vous avez perdu votre mot était : " + jeu.motÀDeviner)
 
-
-
-
-
-            if(jeu.estRéussi()) {
-                vue.afficherScore(jeu.NbrePoints())
-                vue.afficherScore(jeu.NbrePoints())
-
-                jeu.estRéussi()
-                vue.afficherÉtatLettre(Lettres)
-            } else {
-                vue.afficherScore(jeu.NbrePoints())
-                jeu.étatLettres().joinToString()
-                vue.afficherPendu(jeu.nbErreur)
+        }
 
 
-
-
-
-
-            }*/
 
 
 

@@ -121,10 +121,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
 
 
-        images = arrayOf(
-            R.drawable.image1,
-            R.drawable.image2,
-            R.drawable.image3, R.drawable.image4, R.drawable.image5)
+        présentateur.démarrer()
 
 
 
@@ -139,29 +136,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
 
 
-       /* btnReint.setOnClickListener {// présentateur.démarrer()
-        println( "tessssst le mot adeviner : " +présentateur.jeu.MotÀDeviner)
-            //println( "tessssst lettre essayées : " +présentateur.jeu.LettreEssayées.joinToString())
-            présentateur.jeu.essayerUneLettre('f')
-            présentateur.jeu.essayerUneLettre('r')
-            présentateur.jeu.essayerUneLettre('u')
-            présentateur.jeu.essayerUneLettre('i')
-            présentateur.jeu.essayerUneLettre('t')
-            //présentateur.jeu.essayerUneLettre('')
-            //présentateur.sélectionnerLettre('u')
-            //présentateur.sélectionnerLettre('i')
-            //présentateur.sélectionnerLettre('t')
-            //présentateur.sélectionnerLettre('s')
-            println( "tessssst lettre essayées : " +présentateur.jeu.LettreEssayées.joinToString())
-            println( "tessssst letat de la lettre : " +présentateur.jeu.étatLettres().joinToString())
-            //println( "tessssst letat de la lettre : " +présentateur.éta)
-            println( "tesss" +
-                    "3sst si le jeu est reussi  : " +présentateur.jeu.estRéussi())
-        }
-        */
-
-
-
 
 
 
@@ -172,15 +146,16 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
 
 
+
+
     override fun onClick(v: View) {
 
 
             if(v is Button) {
                 println("la lettre selectionne est : " + v.text.toString())
                 présentateur.sélectionnerLettre(v.text.toString().single())
-                println( "tessssst lettre essayées : " +présentateur.jeu.LettreEssayées.joinToString())
-                //println( "tessssst lettre essayées : " +présentateur.jeu.LettreEssayées.joinToString())
-                //println( "tessssst letat de la lettre : " +présentateur.jeu.étatLettres().joinToString())
+                println( "tessssst lettre essayées : " +présentateur.jeu.lettreEssayées.joinToString())
+
                 println( "Nbre Erreurs : " +présentateur.jeu.nbErreur)
                 println( "Nbre Pointage : " +présentateur.jeu.pointage)
                 println( "test si le jeu est reussi : " +présentateur.jeu.estRéussi())
@@ -231,15 +206,21 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     }
 
+
     fun afficherHomme(nbErreur : Int) {
         when(nbErreur){
-            0 -> imgPendu.setImageResource(R.drawable.image1)
             1 -> imgPendu.setImageResource(R.drawable.image2)
             2 -> imgPendu.setImageResource(R.drawable.image3)
             3 -> imgPendu.setImageResource(R.drawable.image4)
             4 -> imgPendu.setImageResource(R.drawable.image5)
+            5 -> imgPendu.setImageResource(R.drawable.image6)
+            6 -> imgPendu.setImageResource(R.drawable.image7)
 
         }
 
     }
+
+
+
+
 }
