@@ -54,9 +54,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     lateinit var btnReint: Button
 
-    // Couleurs des boutons
-    val COULEUR_NORMAL = 0
-    val COULEUR_SÉLECTIONNÉ = 0xFFFF0000.toInt()
 
 
 
@@ -145,7 +142,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
 
             if(v is Button) {
-                println("la lettre selectionne est : " + v.text.toString())
+
                 présentateur.sélectionnerLettre(v.text.toString().single())
 
 
