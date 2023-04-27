@@ -24,11 +24,10 @@ class Présentateur(var vue: MainActivity) {
      */
 
     fun sélectionnerLettre(lettre : Char) {
-        //val Lettres = String(jeu.étatLettres())
+
         jeu.essayerUneLettre(lettre)
         vue.afficherÉtatLettre(jeu.étatLettres().joinToString(""))
         vue.afficherScore(jeu.pointage)
-        //vue.afficherPendu(jeu.nbErreur)
         vue.afficherHomme(jeu.nbErreur)
         if(jeu.estRéussi()==true) {
             vue.afficherÉtatLettre("Bravo votre mot était : " + jeu.motÀDeviner)

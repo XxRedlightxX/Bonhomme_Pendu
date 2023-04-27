@@ -38,7 +38,7 @@ class Jeu(val listeDeMots:MutableList<String> ) {
         var succès = false
         if (!lettreEssayées.contains(lettreMAj)) {
 
-            //LettreEssayées.add(lettreMAj)
+
 
 
             if (ListeMotADeviner.contains(lettreMAj)) {
@@ -96,7 +96,7 @@ class Jeu(val listeDeMots:MutableList<String> ) {
         fun étatLettres(): CharArray {
             var i: Int = 0
             var StatutMot: CharArray = CharArray(motÀDeviner.length ) { '*' }
-            //var solution = MotÀDeviner.toCharArray()
+
             val arrayMotADeviner: Array<String> = motÀDeviner.map { it.toString() }.toTypedArray()
             for (lettresDevines: Char in lettreEssayées) {
                 i = 0

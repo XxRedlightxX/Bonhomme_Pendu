@@ -100,7 +100,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         btnY = findViewById(R.id.btnY)
         btnZ = findViewById(R.id.btnZ)
 
-        lettres = arrayListOf(btnQ,btnW,btnE,btnR,btnT,btnU,btnI,btnO,btnP,btnA,btnS,btnD,btnF,btnG,
+        lettres = arrayListOf(btnQ,btnW,btnE,btnR,btnT,btnU,btnI,btnO,btnP,btnA,btnS,btnF,btnG,
         btnH,btnJ,btnK,btnL,btnX,btnC,btnV,btnD,btnN,btnM,btnY,btnZ)
 
 
