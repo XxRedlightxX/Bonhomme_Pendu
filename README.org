@@ -38,10 +38,10 @@ package dti.g25.pendu {
 View.OnClickListener <|.. MainActivity
 }
 package dti.g25.pendu.présentateur {
-MainActivity o-r- Présentateur
+MainActivity o-r- dti.g25.pendu.Présentateur
 }
 package dti.g25.pendu.modèle {
-Présentateur o-r- Jeu
+dti.g25.pendu.Présentateur o-r- Jeu
 }
 	class Jeu {
 		- lettresEssayées: CharArray
@@ -58,7 +58,7 @@ Présentateur o-r- Jeu
 	}
 
 
-	class Présentateur {
+	class dti.g25.pendu.Présentateur {
 		- jeu: Jeu
 
 		+ sélectionnerLettre( lettre: Char )
@@ -67,7 +67,7 @@ Présentateur o-r- Jeu
 
 
 	class MainActivity {
-		- présentaeur: Présentateur
+		- présentaeur: dti.g25.pendu.Présentateur
 		- onClick(v : View)
 		- afficherÉtatLettres( état: String )
 		- afficherScore( score: Int)
@@ -113,7 +113,7 @@ qui simule le jeu. Elle doit comporter les membres suivants :
 
      - Le caractère souligné (_) si la lettre n'a pas été découverte
 
-** La classe Présentateur
+** La classe dti.g25.pendu.Présentateur
 qui contrôle la présentation des données sur l'interface. Elle doit comporter les membres suivants:
 
 - La méthode ~sélectionnerLettre~, qui réagit à la sélection par l'utilisateur d'une des lettres.

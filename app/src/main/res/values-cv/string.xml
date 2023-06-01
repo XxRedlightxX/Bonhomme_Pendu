@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Hang man</string>
+    <string name="trouver_ce_mot">Find this word</string>
+    <string name="score">Points</string>
+</resources>
